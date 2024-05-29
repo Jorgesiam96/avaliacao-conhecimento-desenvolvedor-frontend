@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Colaboradores</title>
+    <script src="node_modules/angular/angular.js"  type="text/javascript" ></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div ng-controller="appController">
+    <h1>{{ message }}</h1>
+</div>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Procura por nome...">
+</div>
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de Admissão</th>
+            <th>Remuneracão</th>
+            <th>Cargo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Filas de la tabla  -->
+    </tbody>
+</table>
+
+<div class="pagination" id="pagination">
+    <!-- Botones de paginación  -->
+</div>
+
+<div class="form-container">
+    <h3>Adicionar / Editar Colaborador</h3>
+    <input type="text" id="formId" placeholder="ID" disabled>
+    <input type="text" id="formNome" placeholder="Nome">
+    <input type="text" id="formCpf" placeholder="CPF (000.000.000-00)">
+    <input type="text" id="formDataAdmissao" placeholder="Data de Admissão(dd/mm/aaaa)">
+    <input type="number" id="formRemuneracao" placeholder="Remuneração">
+    <select id="formCargo">
+        <!-- Opciones de cargos -->
+    </select>
+    <button id="formSaveBtn">Salvar</button>
+    <button id="formDeleteBtn">Excluir</button>
+</div>
+
+
+<script src="src/app.js" type="text/javascript" ></script>
+</body>
+<script src="script.js"></script>
+</html>
