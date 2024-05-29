@@ -140,7 +140,46 @@ document.addEventListener('DOMContentLoaded', function() {
             remuneracao: formRemuneracao.value,
             cargo: { id: formCargo.value }
         };
-        guardarCambios(newData);
+       ;
+    });
+
+    formDeleteBtn.addEventListener('click', function() {
+        const idColaborador = formId.value;
+        if (!idColaborador) {
+            console.error("No se puede eliminar. ID del colaborador no especificado.");
+            return;
+        }
+    
+        const confirmacion = confirm("¿Estás seguro de que deseas eliminar este colaborador?");
+        if (!confirmacion) {
+            return;
+        }
+    
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', `${BASE_URL}/colaboradores/${idColaborador}`, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log('Colaborador eliminado exitosamente:', idColaborador);
+                const index = colaboradores.findIndex(colaborador => colaborador.id === idColaborador);
+                if (index !== -1) {
+                    colaboradores.splice(index, 1); // Elimina el colaborador del arreglo local
+                    displayTable(currentPage); // Actualiza la tabla después de eliminar el colaborador
+                }
+                // Limpia el formulario después de eliminar
+                formId.value = '';
+                formNome.value = '';
+                formCpf.value = '';
+                formDataAdmissao.value = '';
+                formRemuneracao.value = '';
+                formCargo.value = '';
+            } else {
+                console.error('Error al eliminar el colaborador:', xhr.statusText);
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Error de red al eliminar el colaborador');
+        };
+        xhr.send();
     });
 
     formSaveBtn.addEventListener('click', function() {
@@ -168,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error de red al actualizar el colaborador');
         };
         xhr.send(JSON.stringify(newData));
+        guardarCambios(newData)
     });
    
 
