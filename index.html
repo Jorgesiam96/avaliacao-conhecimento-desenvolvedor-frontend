@@ -13,7 +13,7 @@
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Procura por nome...">
+    <input type="text" id="searchInput" placeholder="&#x1F50D; Procura por nome...">
 </div>
 
 <table id="myTable">
@@ -38,16 +38,18 @@
 
 <div class="form-container">
     <h3>Adicionar / Editar Colaborador</h3>
-    <input type="text" id="formId" placeholder="ID" disabled>
+    <input type="text" id="formId" placeholder="ID" >
     <input type="text" id="formNome" placeholder="Nome">
     <input type="text" id="formCpf" placeholder="CPF (000.000.000-00)">
     <input type="text" id="formDataAdmissao" placeholder="Data de Admissão(dd/mm/aaaa)">
     <input type="number" id="formRemuneracao" placeholder="Remuneração">
     <select id="formCargo">
-        <!-- Opciones de cargos -->
+        <option value="1">GERENTE</option>
+        <option value="2">SUBORDINADO</option>
     </select>
     <button id="formSaveBtn">Salvar</button>
     <button id="formDeleteBtn">Excluir</button>
+    <button id="formAddBtn">Adicionar Colaborador</button>
 </div>
 
 
